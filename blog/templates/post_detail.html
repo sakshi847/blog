@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+<style>
+    .post_details {
+        width: 80%;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .post_info h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .post_detail_meta p {
+        font-size: 14px;
+        color: #666;
+    }
+    .post_detail_meta a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .post_detail_meta a:hover {
+        text-decoration: underline;
+    }
+    .post_detail_content {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.6;
+        margin-top: 15px;
+    }
+</style>
+
+<div class="post_details">
+    <div class="post_info">
+        <h1>{{ post.title }}</h1>
+        <div class="post_detail_meta">
+            <p>Author: {{ post.author }} | 
+                <a href="{% url 'post-edit' post.pk %}"> + Edit Post </a> | 
+                <a href="{% url 'post-delete' post.pk %}"> Remove Post</a>
+            </p>
+        </div>
+    </div>
+    
+    <p class="post_detail_content">
+        {{ post.body }}
+    </p>
+</div>
+
+{% endblock %}

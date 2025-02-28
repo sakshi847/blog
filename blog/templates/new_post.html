@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add New Post
+{% endblock %}
+
+{% block content %}
+<style>
+    .new_post {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .new_post form {
+        display: flex;
+        flex-direction: column;
+    }
+    .new_post button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .new_post button:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="new_post">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div><button>Publish</button></div>
+    </form>
+</div>
+
+{% endblock %}

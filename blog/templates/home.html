@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .post_entry {
+        width: 80%;
+        margin: 20px auto;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .post_title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .post_title a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .post_title a:hover {
+        text-decoration: underline;
+    }
+    .post_content {
+        font-size: 16px;
+        color: #333;
+    }
+</style>
+
+{% for post in posts %}
+    <div class="post_entry">
+        <h2 class="post_title">
+            <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+        </h2>
+        <p class="post_content">{{ post.body }}</p>
+    </div>
+{% endfor %}
+{% endblock %}

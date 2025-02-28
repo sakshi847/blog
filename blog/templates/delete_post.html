@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Delete {{ post.title }}
+{% endblock %}
+
+{% block content %}
+<style>
+    .new_post {
+        width: 350px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .new_post h2 {
+        color: #d9534f;
+    }
+    .new_post p {
+        margin-bottom: 15px;
+    }
+    .new_post button {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .new_post button:hover {
+        background-color: #c9302c;
+    }
+</style>
+
+<div class="new_post">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Are You Sure?</h2>
+        <p>Delete: <strong>{{ post.title }}</strong></p>
+        <div><button>Delete</button></div>
+    </form>
+</div>
+
+{% endblock %}
